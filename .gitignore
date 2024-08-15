@@ -1,0 +1,13 @@
+# Arquivos gerados pelo Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Arquivos gerados pelo ambiente de desenvolvimento
+.idea/
+.vscode/
+
+# Arquivos de dependências
+venv/
+env/
