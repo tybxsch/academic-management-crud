@@ -1,18 +1,4 @@
-def cadastrar_aluno():
-  # Lógica para cadastrar um novo aluno
-  pass
-
-def listar_alunos():
-  # Lógica para listar todos os alunos cadastrados
-  pass
-
-def atualizar_aluno():
-  # Lógica para atualizar os dados de um aluno
-  pass
-
-def excluir_aluno():
-  # Lógica para excluir um aluno
-  pass
+from alunos import cadastrar_aluno, listar_alunos, atualizar_aluno, excluir_aluno
 
 def menu():
   while True:
