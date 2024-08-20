@@ -1,2 +1,2 @@
-def atualizar_aluno():
+def atualizar():
   print("Atualizando aluno...")

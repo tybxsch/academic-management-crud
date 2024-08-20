@@ -1,2 +1,2 @@
-def listar_alunos():
+def listar():
   print("Listando todos os alunos...")

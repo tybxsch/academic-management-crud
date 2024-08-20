@@ -1,2 +1,2 @@
-def excluir_aluno():
+def excluir():
   print("Excluindo aluno...")

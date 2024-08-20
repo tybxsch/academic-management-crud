@@ -1,2 +1,2 @@
-def cadastrar_aluno():
+def cadastrar():
   print("Cadastrando um novo aluno...")
