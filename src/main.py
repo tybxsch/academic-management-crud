@@ -14,20 +14,21 @@ def menu_principal():
         print("\n\nOpção incorreta!")
         return menu_principal()
 
-    if op == 1:
-        menu_estudantes()
-    elif op == 2:
-        menu_professores()
-    elif op == 3:
-        menu_disciplinas()
-    elif op == 4:
-        menu_turmas()
-    elif op == 5:
-        menu_matriculas()
-    elif op == 9:
-        print("Finalizando aplicação...")
-    else:
-        print("\n\nOpção incorreta!")
-        menu_principal()
+    while True: 
+        if op == 1:
+            menu_estudantes()
+        elif op == 2:
+            menu_professores()
+        elif op == 3:
+            menu_disciplinas()
+        elif op == 4:
+            menu_turmas()
+        elif op == 5:
+            menu_matriculas()
+        elif op == 9:
+            print("Finalizando aplicação...")
+        else:
+            print("\n\nOpção incorreta!")
+            menu_principal()
 
 menu_principal()

@@ -1,3 +1,4 @@
+# TODO: Implementar o while True para essa parte também
 def tratar_opcao(acao, modulo):
     if acao == 1:
         modulo.cadastrar()
