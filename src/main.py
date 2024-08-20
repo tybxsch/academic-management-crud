@@ -1,23 +1,4 @@
-import alunos 
-import professores
-import disciplinas
-import turmas
-import matriculas
-from utils import exibir_menu
-
-def tratar_opcao(acao, modulo):
-    if acao == 1:
-        modulo.cadastrar()
-    elif acao == 2:
-        modulo.listar()
-    elif acao == 3:
-        modulo.atualizar()
-    elif acao == 4:
-        modulo.excluir()
-    elif acao == 9:
-        menu_principal()
-    else:
-        print("\n\nOpção incorreta!")
+from views import menu_estudantes, menu_professores, menu_disciplinas, menu_turmas, menu_matriculas
 
 def menu_principal():
     print('----- MENU PRINCIPAL -----\n')
@@ -48,35 +29,5 @@ def menu_principal():
     else:
         print("\n\nOpção incorreta!")
         menu_principal()
-
-def menu_estudantes():
-    opcoes = {1: 'Incluir', 2: 'Listar', 3: 'Atualizar', 4: 'Excluir'}
-    acao = exibir_menu('ESTUDANTES', opcoes)
-    if acao is not None:
-        tratar_opcao(acao, alunos)
-
-def menu_professores():
-    opcoes = {1: 'Incluir', 2: 'Listar', 3: 'Atualizar', 4: 'Excluir'}
-    acao = exibir_menu('PROFESSORES', opcoes)
-    if acao is not None:
-        tratar_opcao(acao, professores)
-
-def menu_disciplinas():
-    opcoes = {1: 'Incluir', 2: 'Listar', 3: 'Atualizar', 4: 'Excluir'}
-    acao = exibir_menu('DISCIPLINAS', opcoes)
-    if acao is not None:
-        tratar_opcao(acao, disciplinas)
-
-def menu_turmas():
-    opcoes = {1: 'Incluir', 2: 'Listar', 3: 'Atualizar', 4: 'Excluir'}
-    acao = exibir_menu('TURMAS', opcoes)
-    if acao is not None:
-        tratar_opcao(acao, turmas)
-
-def menu_matriculas():
-    opcoes = {1: 'Incluir', 2: 'Listar', 3: 'Atualizar', 4: 'Excluir'}
-    acao = exibir_menu('MATRICULAS', opcoes)
-    if acao is not None:
-        tratar_opcao(acao, matriculas)
 
 menu_principal()
