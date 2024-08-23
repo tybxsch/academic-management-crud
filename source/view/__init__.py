@@ -1,0 +1,5 @@
+from .estudante_view import gerenciar_estudantes
+from .professor_view import gerenciar_professores
+from .disciplina_view import gerenciar_disciplinas
+from .turma_view import gerenciar_turmas
+from .matricula_view import gerenciar_matriculas
