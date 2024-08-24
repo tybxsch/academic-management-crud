@@ -1,15 +1,17 @@
 from controller import criar_disciplina, ler_disciplina, atualizar_disciplina, deletar_disciplina
+from utils.constants import INVALID_OPTION_SELECTED, COME_BACK_TO_MAIN_MENU
+from utils.colors import *
 
 def gerenciar_disciplinas():
   while True:
-    print("\n" + "="*30)
-    print("Gerenciando disciplinas")
-    print("="*30)
+    print("\n" + f"{BLUE}={RESET}"*30)
+    print(f"{BLUE}     Gerenciando DISCIPLINAS{RESET}       ")
+    print(f"{BLUE}={RESET}"*30)
     print("1: Criar disciplina")
     print("2: Ler disciplina")
     print("3: Atualizar disciplina")
     print("4: Deletar disciplina")
-    print("9: Voltar para o menu principal")
+    print(COME_BACK_TO_MAIN_MENU)
     print("="*30 + "\n")
 
     opcao = input("Digite a opção desejada: ")
@@ -25,4 +27,4 @@ def gerenciar_disciplinas():
     elif opcao == "9":
       break
     else:
-      print("Opção inválida. Tente novamente.")
+      print(INVALID_OPTION_SELECTED)

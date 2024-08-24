@@ -1,15 +1,17 @@
 from controller import criar_matricula, ler_matricula, atualizar_matricula, deletar_matricula
+from utils.constants import INVALID_OPTION_SELECTED, COME_BACK_TO_MAIN_MENU
+from utils.colors import *
 
 def gerenciar_matriculas():
   while True:
-    print("\n" + "="*30)
-    print("Gerenciando matriculas")
-    print("="*30)
+    print("\n" + f"{CYAN}={RESET}"*30)
+    print(f"{CYAN}     Gerenciando MATRÍCULAS{RESET}       ")
+    print(f"{CYAN}={RESET}"*30)
     print("1: Criar matricula")
     print("2: Ler matricula")
     print("3: Atualizar matricula")
     print("4: Deletar matricula")
-    print("9: Voltar para o menu principal")
+    print(COME_BACK_TO_MAIN_MENU)
     print("="*30 + "\n")
 
     opcao = input("Digite a opção desejada: ")
@@ -25,4 +27,4 @@ def gerenciar_matriculas():
     elif opcao == "9":
       break
     else:
-      print("Opção inválida. Tente novamente.")
+      print(INVALID_OPTION_SELECTED)

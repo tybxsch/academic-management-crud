@@ -1,15 +1,17 @@
 from controller import criar_turma, ler_turma, atualizar_turma, deletar_turma
+from utils.constants import INVALID_OPTION_SELECTED, COME_BACK_TO_MAIN_MENU
+from utils.colors import *
 
 def gerenciar_turmas():
   while True:
-    print("\n" + "="*30)
-    print("Gerenciando turmas")
-    print("="*30)
+    print("\n" + f"{MAGENTA}={RESET}"*30)
+    print(f"{MAGENTA}     Gerenciando TURMAS{RESET}       ")
+    print(f"{MAGENTA}={RESET}"*30)
     print("1: Criar turma")
     print("2: Ler turma")
     print("3: Atualizar turma")
     print("4: Deletar turma")
-    print("9: Voltar para o menu principal")
+    print(COME_BACK_TO_MAIN_MENU)
     print("="*30 + "\n")
 
     opcao = input("Digite a opção desejada: ")
@@ -25,4 +27,4 @@ def gerenciar_turmas():
     elif opcao == "9":
       break
     else:
-      print("Opção inválida. Tente novamente.")
+      print(INVALID_OPTION_SELECTED)
