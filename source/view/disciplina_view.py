@@ -2,12 +2,15 @@ from controller import criar_disciplina, ler_disciplina, atualizar_disciplina, d
 
 def gerenciar_disciplinas():
   while True:
+    print("\n" + "="*30)
     print("Gerenciando disciplinas")
+    print("="*30)
     print("1: Criar disciplina")
     print("2: Ler disciplina")
     print("3: Atualizar disciplina")
     print("4: Deletar disciplina")
     print("9: Voltar para o menu principal")
+    print("="*30 + "\n")
 
     opcao = input("Digite a opção desejada: ")
 

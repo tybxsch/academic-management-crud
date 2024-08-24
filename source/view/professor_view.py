@@ -2,12 +2,15 @@ from controller import criar_professor, ler_professor, atualizar_professor, dele
 
 def gerenciar_professores():
   while True:
+    print("\n" + "="*30)
     print("Gerenciando professors")
+    print("="*30)
     print("1: Criar professor")
     print("2: Ler professor")
     print("3: Atualizar professor")
     print("4: Deletar professor")
     print("9: Voltar para o menu principal")
+    print("="*30 + "\n")
 
     opcao = input("Digite a opção desejada: ")
 

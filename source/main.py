@@ -26,6 +26,7 @@ def menu_principal():
     elif opcao == "5":
       gerenciar_matriculas()
     elif opcao == "9":
+      print("Gerenciador finalizado.")
       break
     else:
       print("Opção inválida. Tente novamente.")

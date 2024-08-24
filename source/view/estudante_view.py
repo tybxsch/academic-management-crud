@@ -2,12 +2,15 @@ from controller import criar_estudante, ler_estudante, atualizar_estudante, dele
 
 def gerenciar_estudantes():
   while True:
+    print("\n" + "="*30)
     print("Gerenciando estudantes")
+    print("="*30)
     print("1: Criar estudante")
     print("2: Ler estudante")
     print("3: Atualizar estudante")
     print("4: Deletar estudante")
     print("9: Voltar para o menu principal")
+    print("="*30 + "\n")
 
     opcao = input("Digite a opção desejada: ")
 
