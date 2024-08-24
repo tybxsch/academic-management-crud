@@ -1,15 +1,20 @@
+from utils.loading import loading
 def criar_matricula():
   # Lógica para criar um matricula
-  print("Criando matricula")
+  loading("Criando matricula")
+  print("\nMatricula criada!")
 
 def ler_matricula():
   # Lógica para ler um matricula
-  print("Lendo matricula")
+  loading("Carregando lista de matricula")
+  print("\nLista de matriculas")
 
 def atualizar_matricula():
   # Lógica para atualizar um matricula
-  print("Atualizando matricula")
+  loading("Atualizando matricula")
+  print("\nMatricula atualizada!")
 
 def deletar_matricula():
   # Lógica para deletar um matricula
-  print("Deletando matricula")
+  loading("Deletando matricula")
+  print("\nMatricula deletada!")
