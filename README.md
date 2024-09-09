@@ -24,27 +24,21 @@ Este projeto tem fins acadêmicos utilizando Python para estudar e desenvolver a
     cd academic-management-crud
     ```
 
-3. Instale as dependências necessárias:
+3. Execute o projeto:
 
     ```sh
-    pip install -r requirements.txt
-    ```
-
-4. Execute o projeto:
-
-    ```sh
-    python source/main.py
+    python src/main.py
     ```
 
 ## 📂 Estrutura do Projeto
 
 ```plaintext
-  source/
+  src/
       controller/
-      model/
       utils/
       view/
       main.py
+      .gitignore
       README.md
 ```
 
