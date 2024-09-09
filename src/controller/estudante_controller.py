@@ -1,11 +1,8 @@
-from utils.loading import loading
-
 estudantes = []
 def criar_estudante():
   # Lógica para criar um estudante
   nome = input("Digite o nome do estudante: ")
   estudantes.append(nome)
-  loading("Criando estudante")
   print("\nEstudante criado!")
 
 def ler_estudante():
@@ -13,7 +10,6 @@ def ler_estudante():
   if not estudantes:
     print("\nNão há estudantes cadastrados")
   else: 
-    loading("Carregando lista de estudante")
     print("\nLista de estudantes:")
     for estudante in estudantes:
       print(estudante)
