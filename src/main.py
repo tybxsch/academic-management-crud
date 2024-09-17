@@ -1,3 +1,5 @@
+# Trabalho de Eduarda Tybusch.
+
 from view import gerenciar_estudantes, gerenciar_professores, gerenciar_disciplinas, gerenciar_turmas, gerenciar_matriculas
 from utils.constants import INVALID_OPTION_SELECTED
 from utils.colors import *
