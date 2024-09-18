@@ -21,11 +21,14 @@ def encontrar_estudante_por_codigo(codigo):
 
 def criar_estudante():
     while True:
-        codigo = int(input("Digite o código do estudante: "))
-        if validar_codigo(codigo):
-            print("Código já existe. Por favor, digite um código diferente.")
-        else:
-            break
+        try:
+            codigo = int(input("Digite o código do estudante: "))
+            if validar_codigo(codigo):
+                print("Código já existe. Por favor, digite um código diferente.")
+            else:
+                break
+        except ValueError:
+            print("Código inválido. Por favor, digite um número inteiro.")
 
     nome = input("Digite o nome do estudante: ")
 
@@ -54,15 +57,25 @@ def ler_estudante():
 
 
 def atualizar_estudante():
-    codigo_de_entrada = int(input("Digite o código do estudante a ser atualizado: "))
+    try:
+        codigo_de_entrada = int(
+            input("Digite o código do estudante a ser atualizado: ")
+        )
+    except ValueError:
+        print("Código inválido. Por favor, digite um número inteiro.")
+        return
+
     estudante = encontrar_estudante_por_codigo(codigo_de_entrada)
     if estudante:
         while True:
-            novo_codigo = int(input("Digite o novo código do estudante: "))
-            if validar_codigo(novo_codigo) and novo_codigo != estudante["codigo"]:
-                print("Código já existe. Por favor, digite um código diferente.")
-            else:
-                break
+            try:
+                novo_codigo = int(input("Digite o novo código do estudante: "))
+                if validar_codigo(novo_codigo) and novo_codigo != estudante["codigo"]:
+                    print("Código já existe. Por favor, digite um código diferente.")
+                else:
+                    break
+            except ValueError:
+                print("Código inválido. Por favor, digite um número inteiro.")
 
         novo_nome = input("Digite o novo nome do estudante: ")
 
@@ -83,7 +96,12 @@ def atualizar_estudante():
 
 
 def deletar_estudante():
-    codigo_de_entrada = int(input("Digite o código do estudante a ser deletado: "))
+    try:
+        codigo_de_entrada = int(input("Digite o código do estudante a ser deletado: "))
+    except ValueError:
+        print("Código inválido. Por favor, digite um número inteiro.")
+        return
+
     estudante = encontrar_estudante_por_codigo(codigo_de_entrada)
     if estudante:
         estudantesArray.remove(estudante)
