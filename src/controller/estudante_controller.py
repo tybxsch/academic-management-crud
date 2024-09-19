@@ -2,7 +2,6 @@ import re
 
 estudantesArray = []
 
-
 def validar_codigo(codigo):
     return any(estudante["codigo"] == codigo for estudante in estudantesArray)
 
