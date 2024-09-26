@@ -1,22 +1,18 @@
-import re
+from utils.arquivos.ler_json import ler_json
+from utils.arquivos.escrever_json import escrever_json
 
-estudantesArray = []
+ARQUIVO_ESTUDANTES = "estudantes"
 
 def validar_codigo(codigo):
-    return any(estudante["codigo"] == codigo for estudante in estudantesArray)
-
-
-def validar_cpf(cpf):
-    cpf = re.sub(r"\D", "", cpf)
-    return len(cpf) == 11
-
+    estudantes = ler_json(ARQUIVO_ESTUDANTES)
+    return any(estudante["codigo"] == codigo for estudante in estudantes)
 
 def encontrar_estudante_por_codigo(codigo):
-    for estudante in estudantesArray:
+    estudantes = ler_json(ARQUIVO_ESTUDANTES)
+    for estudante in estudantes:
         if estudante["codigo"] == codigo:
             return estudante
     return None
-
 
 def criar_estudante():
     while True:
@@ -31,29 +27,24 @@ def criar_estudante():
 
     nome = input("Digite o nome do estudante: ")
 
-    while True:
-        cpf = input("Digite o CPF do estudante (11 caracteres): ")
-        if validar_cpf(cpf):
-            cpf = re.sub(r"\D", "", cpf)
-            break
-        else:
-            print("CPF inválido. Deve conter exatamente 11 caracteres.")
+    cpf = input("Digite o CPF do estudante: ")
 
     estudante = {"codigo": codigo, "nome": nome, "cpf": cpf}
-    estudantesArray.append(estudante)
+    estudantes = ler_json(ARQUIVO_ESTUDANTES)
+    estudantes.append(estudante)
+    escrever_json(estudantes, ARQUIVO_ESTUDANTES)
     print("\nEstudante criado!")
 
-
 def ler_estudante():
-    if not estudantesArray:
+    estudantes = ler_json(ARQUIVO_ESTUDANTES)
+    if not estudantes:
         print("\nNão há estudantes cadastrados")
     else:
         print("\nLista de estudantes:")
-        for estudante in estudantesArray:
+        for estudante in estudantes:
             print(
                 f"Código: {estudante['codigo']}, Nome: {estudante['nome']}, CPF: {estudante['cpf']}"
             )
-
 
 def atualizar_estudante():
     try:
@@ -64,6 +55,7 @@ def atualizar_estudante():
         print("Código inválido. Por favor, digite um número inteiro.")
         return
 
+    estudantes = ler_json(ARQUIVO_ESTUDANTES)
     estudante = encontrar_estudante_por_codigo(codigo_de_entrada)
     if estudante:
         while True:
@@ -78,21 +70,19 @@ def atualizar_estudante():
 
         novo_nome = input("Digite o novo nome do estudante: ")
 
-        while True:
-            novo_cpf = input("Digite o novo CPF do estudante (11 caracteres): ")
-            if validar_cpf(novo_cpf):
-                novo_cpf = re.sub(r"\D", "", novo_cpf)
-                break
-            else:
-                print("CPF inválido. Deve conter exatamente 11 caracteres.")
+        novo_cpf = input("Digite o novo CPF do estudante: ")
 
-        estudante["codigo"] = novo_codigo
-        estudante["nome"] = novo_nome
-        estudante["cpf"] = novo_cpf
+        for est in estudantes:
+            if est["codigo"] == codigo_de_entrada:
+                est["codigo"] = novo_codigo
+                est["nome"] = novo_nome
+                est["cpf"] = novo_cpf
+                break
+
+        escrever_json(estudantes, ARQUIVO_ESTUDANTES)
         print("\nEstudante atualizado!")
     else:
         print("\nEstudante não encontrado!")
-
 
 def deletar_estudante():
     try:
@@ -101,9 +91,11 @@ def deletar_estudante():
         print("Código inválido. Por favor, digite um número inteiro.")
         return
 
+    estudantes = ler_json(ARQUIVO_ESTUDANTES)
     estudante = encontrar_estudante_por_codigo(codigo_de_entrada)
     if estudante:
-        estudantesArray.remove(estudante)
+        estudantes.remove(estudante)
+        escrever_json(estudantes, ARQUIVO_ESTUDANTES)
         print("\nEstudante deletado!")
     else:
         print("\nEstudante não encontrado!")
