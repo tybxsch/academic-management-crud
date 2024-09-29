@@ -1,4 +1,5 @@
 from .entidade_controller import EntidadeController
+from utils.constants import INVALID_CODE
 
 
 class DisciplinaController:
@@ -20,7 +21,6 @@ class DisciplinaController:
         codigo_de_entrada = input("Digite o código da disciplina a ser atualizada: ")
 
         if not self.entidade.validar_codigo_existente(codigo_de_entrada):
-            print("Erro: Código não encontrado.")
             return
 
         novo_nome = input("Digite o novo nome da disciplina: ")
@@ -33,7 +33,6 @@ class DisciplinaController:
         codigo_de_entrada = input("Digite o código da disciplina a ser deletada: ")
 
         if not self.entidade.validar_codigo_existente(codigo_de_entrada):
-            print("Erro: Código não encontrado.")
             return
 
         self.entidade.deletar_entidade(codigo_de_entrada)

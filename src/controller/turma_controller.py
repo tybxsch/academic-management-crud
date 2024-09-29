@@ -1,5 +1,6 @@
 from .entidade_controller import EntidadeController
 from utils.numero_inteiro import obter_codigo_inteiro
+from utils.constants import INVALID_CODE
 
 
 class TurmaController:
@@ -26,7 +27,6 @@ class TurmaController:
         codigo_turma = input("Digite o código da turma a ser atualizada: ")
 
         if not self.entidade.validar_codigo_existente(codigo_turma):
-            print("Erro: Código não encontrado.")
             return
 
         novo_codigo_professor = obter_codigo_inteiro(
@@ -47,7 +47,6 @@ class TurmaController:
         codigo_turma = input("Digite o código da turma a ser deletada: ")
 
         if not self.entidade.validar_codigo_existente(codigo_turma):
-            print("Erro: Código não encontrado.")
             return
 
         self.entidade.deletar_entidade(codigo_turma)

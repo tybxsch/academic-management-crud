@@ -1,6 +1,7 @@
 from utils.arquivos.ler_json import ler_json
 from utils.arquivos.escrever_json import escrever_json
 from utils.identificador_unico import identificador_unico_baseado_em_timestemp
+from utils.constants import INVALID_CODE
 
 
 class EntidadeController:
@@ -18,7 +19,7 @@ class EntidadeController:
         for entidade in self.entidades:
             if str(entidade["codigo"]) == str(codigo):
                 return True
-        print("Código não encontrado.")
+        print(INVALID_CODE)
         return False
 
     def criar_entidade(self, entidade):
@@ -45,7 +46,7 @@ class EntidadeController:
                 entidade.update(novos_dados)
                 self.escrever_json()
                 return
-        print("Erro: Código não encontrado.")
+        print(INVALID_CODE)
 
     def deletar_entidade(self, codigo):
         for entidade in self.entidades:
@@ -53,4 +54,4 @@ class EntidadeController:
                 self.entidades.remove(entidade)
                 self.escrever_json()
                 return
-        print("Erro: Código não encontrado.")
+        print(INVALID_CODE)

@@ -1,5 +1,6 @@
 from .entidade_controller import EntidadeController
 from utils.numero_inteiro import obter_codigo_inteiro
+from utils.constants import INVALID_CODE
 
 
 class MatriculaController:
@@ -26,7 +27,6 @@ class MatriculaController:
         codigo_matricula = input("Digite o código da matrícula a ser atualizada: ")
 
         if not self.entidade.validar_codigo_existente(codigo_matricula):
-            print("Erro: Código não encontrado.")
             return
 
         novo_codigo_turma = obter_codigo_inteiro("Digite o novo código da turma: ")
@@ -45,7 +45,6 @@ class MatriculaController:
         codigo_matricula = input("Digite o código da matrícula a ser deletada: ")
 
         if not self.entidade.validar_codigo_existente(codigo_matricula):
-            print("Erro: Código não encontrado.")
             return
 
         self.entidade.deletar_entidade(codigo_matricula)
