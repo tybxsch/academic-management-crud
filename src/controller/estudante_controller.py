@@ -1,6 +1,5 @@
 from .entidade_controller import EntidadeController
 
-entidade = EntidadeController("estudantes")
 
 
 class EstudanteController:

@@ -15,9 +15,7 @@ class EntidadeController:
         return identificador_unico_baseado_em_timestemp()
 
     def validar_codigo_existente(self, codigo):
-        print(f"Validando código: {codigo}")
         for entidade in self.entidades:
-            print(f"Comparando com entidade: {entidade['codigo']}")
             if str(entidade["codigo"]) == str(codigo):
                 return True
         print("Código não encontrado.")

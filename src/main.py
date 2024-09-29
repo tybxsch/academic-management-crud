@@ -29,8 +29,7 @@ def menu_principal():
         if opcao == "1":
             gerenciar_estudantes()
         elif opcao == "2":
-            # Todo: implementar nas próximas semanas gerenciar_professores()
-            print("EM DESENVOLVIMENTO")
+            gerenciar_professores()
         elif opcao == "3":
             # Todo: implementar nas próximas semanas gerenciar_disciplinas()
             print("EM DESENVOLVIMENTO")
