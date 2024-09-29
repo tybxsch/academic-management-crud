@@ -35,8 +35,7 @@ def menu_principal():
         elif opcao == "4":
             gerenciar_turmas()
         elif opcao == "5":
-            # Todo: implementar nas próximas semanas gerenciar_matriculas()
-            print("EM DESENVOLVIMENTO")
+            gerenciar_matriculas()
         elif opcao == "9":
             print("Gerenciador finalizado.")
             break
