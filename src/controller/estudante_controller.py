@@ -2,38 +2,43 @@ from .entidade_controller import EntidadeController
 
 entidade = EntidadeController("estudantes")
 
-def criar_estudante():
-        codigo = entidade.gerar_identificador_unico()
-        nome = input("Digite o nome do estudante: ")
-        cpf = input("Digite o CPF do estudante: ")
 
-        estudante = {"codigo": codigo, "nome": nome, "cpf": cpf}
-        entidade.criar_entidade("estudantes", estudante)
-        print("\nEstudante criado!")
+class EstudanteController:
+        def __init__(self):
+                self.entidade = EntidadeController("estudantes")
 
-def ler_estudante():
-        entidade.ler_entidade("estudantes")
+        def criar_estudante(self):
+                codigo = self.entidade.gerar_identificador_unico()
+                nome = input("Digite o nome do estudante: ")
+                cpf = input("Digite o CPF do estudante: ")
 
-def atualizar_estudante():
-        codigo_de_entrada = input("Digite o código do estudante a ser atualizado: ")
+                estudante = {"codigo": codigo, "nome": nome, "cpf": cpf}
+                self.entidade.criar_entidade(estudante)
+                print("\nEstudante criado!")
 
-        if not entidade.validar_codigo_existente("estudantes", codigo_de_entrada):
-                print("Erro: Código não encontrado.")
-                return
+        def ler_estudante(self):
+                self.entidade.ler_entidade()
 
-        novo_nome = input("Digite o novo nome do estudante: ")
-        novo_cpf = input("Digite o novo CPF do estudante: ")
+        def atualizar_estudante(self):
+                codigo_de_entrada = input("Digite o código do estudante a ser atualizado: ")
 
-        novos_dados = {"nome": novo_nome, "cpf": novo_cpf}
-        entidade.atualizar_entidade("estudantes", codigo_de_entrada, novos_dados)
-        print("\nEstudante atualizado!")
+                if not self.entidade.validar_codigo_existente(codigo_de_entrada):
+                        print("Erro: Código não encontrado.")
+                        return
 
-def deletar_estudante():
-        codigo_de_entrada = input("Digite o código do estudante a ser deletado: ")
+                novo_nome = input("Digite o novo nome do estudante: ")
+                novo_cpf = input("Digite o novo CPF do estudante: ")
 
-        if not entidade.validar_codigo_existente("estudantes", codigo_de_entrada):
-                print("Erro: Código não encontrado.")
-                return
+                novos_dados = {"nome": novo_nome, "cpf": novo_cpf}
+                self.entidade.atualizar_entidade(codigo_de_entrada, novos_dados)
+                print("\nEstudante atualizado!")
 
-        entidade.deletar_entidade("estudantes", codigo_de_entrada)
-        print("\nEstudante deletado!")
+        def deletar_estudante(self):
+                codigo_de_entrada = input("Digite o código do estudante a ser deletado: ")
+
+                if not self.entidade.validar_codigo_existente(codigo_de_entrada):
+                        print("Erro: Código não encontrado.")
+                        return
+
+                self.entidade.deletar_entidade(codigo_de_entrada)
+                print("\nEstudante deletado!")

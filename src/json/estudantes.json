@@ -2,26 +2,6 @@
     {
         "codigo": 1,
         "nome": "Eduarda",
-        "cpf": "2"
-    },
-    {
-        "codigo": 99581,
-        "nome": "Maria",
-        "cpf": "7777"
-    },
-    {
-        "codigo": 99184,
-        "nome": "1",
-        "cpf": "1231231"
-    },
-    {
-        "codigo": 98225,
-        "nome": "Pfuncia",
-        "cpf": "12312"
-    },
-    {
-        "codigo": 99582,
-        "nome": "dasdad",
-        "cpf": "3123123"
+        "cpf": "1"
     }
 ]
