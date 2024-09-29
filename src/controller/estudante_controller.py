@@ -1,101 +1,45 @@
-from utils.arquivos.ler_json import ler_json
-from utils.arquivos.escrever_json import escrever_json
+from .entidade_controller import EntidadeController
+from utils.valida_cpf import valida_cpf
+from utils.constants import INVALID_CODE
 
-ARQUIVO_ESTUDANTES = "estudantes"
 
-def validar_codigo(codigo):
-    estudantes = ler_json(ARQUIVO_ESTUDANTES)
-    return any(estudante["codigo"] == codigo for estudante in estudantes)
 
-def encontrar_estudante_por_codigo(codigo):
-    estudantes = ler_json(ARQUIVO_ESTUDANTES)
-    for estudante in estudantes:
-        if estudante["codigo"] == codigo:
-            return estudante
-    return None
+class EstudanteController:
+        def __init__(self):
+                self.entidade = EntidadeController("estudantes")
 
-def criar_estudante():
-    while True:
-        try:
-            codigo = int(input("Digite o código do estudante: "))
-            if validar_codigo(codigo):
-                print("Código já existe. Por favor, digite um código diferente.")
-            else:
-                break
-        except ValueError:
-            print("Código inválido. Por favor, digite um número inteiro.")
+        def criar_estudante(self):
+                codigo = self.entidade.gerar_identificador_unico()
+                nome = input("Digite o nome do estudante: ")
+                cpf = input("Digite o CPF do estudante: ")
 
-    nome = input("Digite o nome do estudante: ")
+                if valida_cpf(cpf):
+                        estudante = {"codigo": codigo, "nome": nome, "cpf": cpf}
+                        self.entidade.criar_entidade(estudante)
+                        print("\nEstudante criado!")
 
-    cpf = input("Digite o CPF do estudante: ")
+        def ler_estudante(self):
+                self.entidade.ler_entidade()
 
-    estudante = {"codigo": codigo, "nome": nome, "cpf": cpf}
-    estudantes = ler_json(ARQUIVO_ESTUDANTES)
-    estudantes.append(estudante)
-    escrever_json(estudantes, ARQUIVO_ESTUDANTES)
-    print("\nEstudante criado!")
+        def atualizar_estudante(self):
+                codigo_de_entrada = input("Digite o código do estudante a ser atualizado: ")
 
-def ler_estudante():
-    estudantes = ler_json(ARQUIVO_ESTUDANTES)
-    if not estudantes:
-        print("\nNão há estudantes cadastrados")
-    else:
-        print("\nLista de estudantes:")
-        for estudante in estudantes:
-            print(
-                f"Código: {estudante['codigo']}, Nome: {estudante['nome']}, CPF: {estudante['cpf']}"
-            )
+                if not self.entidade.validar_codigo_existente(codigo_de_entrada):
+                        return
 
-def atualizar_estudante():
-    try:
-        codigo_de_entrada = int(
-            input("Digite o código do estudante a ser atualizado: ")
-        )
-    except ValueError:
-        print("Código inválido. Por favor, digite um número inteiro.")
-        return
+                novo_nome = input("Digite o novo nome do estudante: ")
+                novo_cpf = input("Digite o novo CPF do estudante: ")
 
-    estudantes = ler_json(ARQUIVO_ESTUDANTES)
-    estudante = encontrar_estudante_por_codigo(codigo_de_entrada)
-    if estudante:
-        while True:
-            try:
-                novo_codigo = int(input("Digite o novo código do estudante: "))
-                if validar_codigo(novo_codigo) and novo_codigo != estudante["codigo"]:
-                    print("Código já existe. Por favor, digite um código diferente.")
-                else:
-                    break
-            except ValueError:
-                print("Código inválido. Por favor, digite um número inteiro.")
+                if valida_cpf(novo_cpf):
+                        novos_dados = {"nome": novo_nome, "cpf": novo_cpf}
+                        self.entidade.atualizar_entidade(codigo_de_entrada, novos_dados)
+                        print("\nEstudante atualizado!")
 
-        novo_nome = input("Digite o novo nome do estudante: ")
+        def deletar_estudante(self):
+                codigo_de_entrada = input("Digite o código do estudante a ser deletado: ")
 
-        novo_cpf = input("Digite o novo CPF do estudante: ")
+                if not self.entidade.validar_codigo_existente(codigo_de_entrada):
+                        return
 
-        for est in estudantes:
-            if est["codigo"] == codigo_de_entrada:
-                est["codigo"] = novo_codigo
-                est["nome"] = novo_nome
-                est["cpf"] = novo_cpf
-                break
-
-        escrever_json(estudantes, ARQUIVO_ESTUDANTES)
-        print("\nEstudante atualizado!")
-    else:
-        print("\nEstudante não encontrado!")
-
-def deletar_estudante():
-    try:
-        codigo_de_entrada = int(input("Digite o código do estudante a ser deletado: "))
-    except ValueError:
-        print("Código inválido. Por favor, digite um número inteiro.")
-        return
-
-    estudantes = ler_json(ARQUIVO_ESTUDANTES)
-    estudante = encontrar_estudante_por_codigo(codigo_de_entrada)
-    if estudante:
-        estudantes.remove(estudante)
-        escrever_json(estudantes, ARQUIVO_ESTUDANTES)
-        print("\nEstudante deletado!")
-    else:
-        print("\nEstudante não encontrado!")
+                self.entidade.deletar_entidade(codigo_de_entrada)
+                print("\nEstudante deletado!")
